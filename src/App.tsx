@@ -3,19 +3,16 @@ import FAQGroup from "./components/FAQGroup";
 import SearchBar from "./components/SearchBar";
 // import "./styles/App.scss";
 import data from "./data/02-faq.json";
-import FilteredQuestions from "./context";
-import { FAQItemType } from "./types";
+import { FaqQuestionType } from "./types";
 
 const App: React.FC = () => {
-  const [filteredQuestions, setFilteredQuestions] = useState<FAQItemType[]>([]);
+  const [filteredQuestions, setFilteredQuestions] = useState<FaqQuestionType[]>([]);
 
   return (
     <div className="app">
-      <FilteredQuestions.Provider value={{ filteredQuestions, setFilteredQuestions }}>
-        <SearchBar data={data} />
-        <FAQGroup columnType="left" />
-        {/* <FAQGroup searchTerm={searchTerm} columnType="right" /> */}
-      </FilteredQuestions.Provider>
+      <SearchBar data={data} setFilteredQuestions={setFilteredQuestions} />
+      <FAQGroup columnType="left" filteredQuestions={filteredQuestions} />
+      <FAQGroup columnType="right" filteredQuestions={filteredQuestions} />
     </div>
   );
 };

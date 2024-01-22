@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import "../styles/FAQItem.scss";
 
 interface FAQItemProps {
-  id: number;
   title: string;
   content: string;
 }
