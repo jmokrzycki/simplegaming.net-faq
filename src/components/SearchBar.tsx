@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { FaqQuestionType } from "./../types";
 import "../styles/SearchBar.scss";
 
 type SearchBarProps = {
-  data: { questions: FaqQuestionType[] };
+  questions: FaqQuestionType[];
   setFilteredQuestions: (questions: FaqQuestionType[]) => void;
 };
 
@@ -18,13 +18,7 @@ function fullTextSearch(data: FaqQuestionType[], searchTerm: string) {
   });
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ data, setFilteredQuestions }) => {
-  let questions = data.questions;
-
-  useEffect(() => {
-    setFilteredQuestions(questions);
-  }, []);
-
+const SearchBar: React.FC<SearchBarProps> = ({ questions, setFilteredQuestions }) => {
   const setSearchTerm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilteredQuestions(fullTextSearch(questions, e.target.value));
   };

@@ -10,16 +10,19 @@ type FAQGroupProps = {
 };
 
 const FAQGroup: React.FC<FAQGroupProps> = ({ columnType, filteredQuestions }) => {
+  const groups = data.groups[columnType].map((group) => ({
+    ...group,
+    questions: filteredQuestions.filter((question) => question.groupId === group.id),
+  }));
+
   return (
     <div className={`faqGroup faqGroup-${columnType}`}>
-      {data.groups[columnType].map((group) => (
+      {groups.map((group) => (
         <React.Fragment key={group.id}>
           <h2 className="group-name">{group.name}</h2>
-          {filteredQuestions
-            .filter((question) => question.groupId === group.id)
-            .map((question) => (
-              <FAQItem key={question.title} title={question.title} content={question.content} />
-            ))}
+          {group.questions.map((question) => (
+            <FAQItem key={question.id} title={question.title} content={question.content} />
+          ))}
         </React.Fragment>
       ))}
     </div>
