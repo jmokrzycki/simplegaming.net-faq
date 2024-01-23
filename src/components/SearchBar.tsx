@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { FaqQuestionType } from "./../types";
-// import "../styles/SearchBar.scss";
+import "../styles/SearchBar.scss";
 
 type SearchBarProps = {
   data: { questions: FaqQuestionType[] };

@@ -1,0 +1,33 @@
+.faqGroup {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  flex: 1;
+
+  &-left {
+    margin-right: 5px;
+  }
+
+  &-right {
+    margin-left: 5px;
+  }
+
+  .group-name {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  @media (min-width: 768px) {
+    &:first-child {
+      margin-right: 10px;
+    }
+
+    &:last-child {
+      margin-left: 10px;
+    }
+  }
+}

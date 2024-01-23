@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "../styles/FAQItem.scss";
+import "../styles/FAQItem.scss";
 
 interface FAQItemProps {
   title: string;
@@ -10,11 +10,11 @@ const FAQItem: React.FC<FAQItemProps> = ({ title, content }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="faq-item">
-      <div className="faq-title" onClick={() => setIsOpen(!isOpen)}>
+    <div className="faqItem">
+      <div className={`faq-title ${isOpen ? "open" : ""}`} onClick={() => setIsOpen(!isOpen)}>
         {title}
       </div>
-      {isOpen && <div className="faq-content" dangerouslySetInnerHTML={{ __html: content }} />}
+      <div className={`faq-content ${isOpen ? "open" : ""}`} dangerouslySetInnerHTML={{ __html: content }} />
     </div>
   );
 };
