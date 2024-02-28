@@ -28,12 +28,23 @@ const FAQItem: React.FC<FAQItemProps> = ({ title, content }) => {
   }, [location.hash, title]);
 
   return (
-    <div className="faqItem">
-      <div className={`faq-title ${isOpen ? "open" : ""}`} onClick={handleToggle} aria-expanded={isOpen}>
+    <li className="faqItem">
+      <div
+        className={`faq-title ${isOpen ? "open" : ""}`}
+        onClick={handleToggle}
+        tabIndex={0}
+        aria-expanded={isOpen}
+        role="button"
+        aria-controls={`faq-content-${title}`}
+      >
         {title}
       </div>
-      <div className={`faq-content ${isOpen ? "open" : ""}`} dangerouslySetInnerHTML={{ __html: sanitizedContent }} />
-    </div>
+      <div
+        id={`faq-content-${title}`}
+        className={`faq-content ${isOpen ? "open" : ""}`}
+        dangerouslySetInnerHTML={{ __html: sanitizedContent }}
+      />
+    </li>
   );
 };
 
