@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ questions, setFilteredQuestions }
 
   return (
     <div className="search-bar">
-      <input type="text" placeholder="Search..." onChange={setSearchTerm} />
+      <input type="text" placeholder="Search..." onChange={setSearchTerm} aria-label="Search FAQ" />
     </div>
   );
 };

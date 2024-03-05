@@ -16,16 +16,20 @@ const FAQGroup: React.FC<FAQGroupProps> = ({ columnType, filteredQuestions }) =>
   }));
 
   return (
-    <div className={`faqGroup faqGroup-${columnType}`}>
+    <section className={`faqGroup faqGroup-${columnType}`} aria-labelledby={`${columnType}-faq-heading`}>
       {groups.map((group) => (
         <React.Fragment key={group.id}>
-          <h2 className="group-name">{group.name}</h2>
-          {group.questions.map((question) => (
-            <FAQItem key={question.id} title={question.title} content={question.content} />
-          ))}
+          <h2 id={`${columnType}-faq-heading`} className="group-name">
+            {group.name}
+          </h2>
+          <ul className="faq-list" role="list">
+            {group.questions.map((question) => (
+              <FAQItem key={question.id} title={question.title} content={question.content} />
+            ))}
+          </ul>
         </React.Fragment>
       ))}
-    </div>
+    </section>
   );
 };
 
